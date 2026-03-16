@@ -8,6 +8,10 @@ class QLabel;
 class QCheckBox;
 class QPushButton;
 class QScrollArea;
+class QHBoxLayout;
+class QVBoxLayout;
+class QWidget;
+class QCheckBox;
 
 class MainWindow : public QWidget
 {
@@ -15,11 +19,29 @@ public:
     MainWindow();
 
 private:
-    QScrollArea *scrollarea;
-    QLineEdit *nameInput;
+    // Buttons
+    QPushButton *addButton;
+    QPushButton *rmvButton;
+
+    // text Input
+    QLineEdit *tskInput;
+
+    // CheckBox
+    QCheckBox *taskItem;
+
+    // Label
     QLabel *label;
-    QCheckBox *checkbox;
-    QPushButton *button;
+
+    // Scroll Area
+    QScrollArea *scrollarea;
+
+    // Layouts 
+    QHBoxLayout *inputContainer;
+    QVBoxLayout *mainLayout;
+    QVBoxLayout *scrollLayout;
+
+    // container widgets
+    QWidget *widgets;
 };
 
 #endif

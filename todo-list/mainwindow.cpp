@@ -5,38 +5,50 @@
 #include <QPushButton>
 #include <QCheckBox>
 #include <QScrollArea>
+#include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QWidget>
+#include <QCheckBox>
 
 MainWindow::MainWindow()
 {
     setWindowTitle("To-Do List App");
-    resize(300,150);
+    resize(600,650);
 
-    nameInput = new QLineEdit();
-    nameInput->setPlaceholderText("Enter your name");
+    // Buttons
+    addButton = new QPushButton("Add");
+    rmvButton = new QPushButton("Remove");
 
-    button = new QPushButton("Welcome");
-    checkbox = new QCheckBox("Hello World");
+    // Text Input
+    tskInput = new QLineEdit();
 
+    // task Item - check if done.
+    taskItem = new QCheckBox();
+
+    // Label
+    label = new QLabel("Hello World");
+
+    // Scroll Area, where tasks will be displayed
     scrollarea = new QScrollArea();
 
-    label = new QLabel("Waiting...");
+    // layouts
+    inputContainer = new QHBoxLayout();
+    mainLayout = new QVBoxLayout();
+    scrollLayout = new QVBoxLayout();
 
-    QVBoxLayout *layout = new QVBoxLayout();
+    widgets = new QWidget();
 
-    layout->addWidget(nameInput);
-    layout->addWidget(button);
-    layout->addWidget(checkbox);
-    layout->addWidget(label);
+    mainLayout->addWidget(label);
+    mainLayout->addWidget(tskInput);
+    mainLayout->addWidget(addButton);
+    mainLayout->addWidget(rmvButton);
 
-    scrollarea->setLayout(layout);
+    setLayout(mainLayout);
 
-    (layout);
-
-    QObject::connect(button, &QPushButton::clicked, [=]() {
+    /* QObject::connect(button, &QPushButton::clicked, [=]() {
 
         QString name = nameInput->text();
         label->setText("Welcome " + name);
 
-    });
+    }); */
 }
